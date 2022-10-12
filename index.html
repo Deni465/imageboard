@@ -3,9 +3,30 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="style.css" />
         <title>Image Board</title>
     </head>
     <body>
+        <div id="main">
+            <h1 :class.camel="headlineCssClass">{{ headline }}</h1>
+            <div v-if="cards" class="container">
+                <div v-for="card in cards" class="card">
+                    <figure class="card__thumb">
+                        <img
+                            :src="card.url"
+                            alt="Picture by Kyle Cottrell"
+                            class="card__image"
+                        />
+                        <figcaption class="card__caption">
+                            <h2 class="card__title">{{card.title}}</h2>
+                            <p class="card__snippet">{{card.text}}</p>
+                            <a href="" class="card__button">Read more</a>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+
         <script
             src="/js/app.js"
             type="module"
