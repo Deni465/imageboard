@@ -3,7 +3,7 @@ import * as Vue from "./vue.js";
 Vue.createApp({
     data() {
         return {
-            headline: "My Image Board",
+            headline: "Image Board",
             cards: [],
             headlineCssClass: "headline",
         };
