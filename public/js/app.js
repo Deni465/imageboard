@@ -34,7 +34,7 @@ Vue.createApp({
             myFormData.append("file", this.file);
 
             fetch(form.action, {
-                method: "post",
+                method: "post", 
                 body: myFormData,
             })
                 .then((res) => res.json())

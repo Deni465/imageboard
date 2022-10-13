@@ -71,7 +71,7 @@ app.post("/cards", uploader.single("file"), (req, res) => {
             })
             .catch((err) => {
                 // uh oh
-                console.log(err);
+                console.log(err); 
             });
     } else {
         res.json({
