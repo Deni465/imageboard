@@ -26,16 +26,10 @@
                     type="file"
                     name="file"
                     id="file"
-                    @change="handleChange"
                     required
                     accept="image/*"
                 />
-                <input
-                    @click="uploadButtonClick"
-                    type="submit"
-                    value="Upload"
-                    class="btn-submit"
-                />
+                <input type="submit" value="Upload" class="btn-submit" />
             </form>
 
             <div v-if="cards" class="container">
