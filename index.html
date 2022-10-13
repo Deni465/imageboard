@@ -9,6 +9,35 @@
     <body>
         <div id="main">
             <h1 :class.camel="headlineCssClass">{{ headline }}</h1>
+            <p class="status">{{message}}</p>
+            <form
+                action="/cards"
+                method="post"
+                enctype="multipart/form-data"
+                @submit.prevent="upload"
+            >
+                <label for="title">Title</label>
+                <input type="text" />
+                <label for="description">Description</label>
+                <input type="text" />
+                <label for="username">Username</label>
+                <input type="text" />
+                <input
+                    type="file"
+                    name="file"
+                    id="file"
+                    @change="handleChange"
+                    required
+                    accept="image/*"
+                />
+                <input
+                    @click="uploadButtonClick"
+                    type="submit"
+                    value="Upload"
+                    class="btn-submit"
+                />
+            </form>
+
             <div v-if="cards" class="container">
                 <div v-for="card in cards" class="card">
                     <figure class="card__thumb">
@@ -20,17 +49,23 @@
                         <figcaption class="card__caption">
                             <h2 class="card__title">{{card.title}}</h2>
                             <p class="card__snippet">{{card.text}}</p>
-                            <a href="" class="card__button">Read more</a>
+                            <a href="" class="card__button">Comment</a>
                         </figcaption>
                     </figure>
                 </div>
             </div>
         </div>
 
+        <!-- <div id="loader">
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+        </div> -->
         <script
             src="/js/app.js"
             type="module"
             crossorigin="use-credentials"
         ></script>
+        <script src="/js/infiniteScroll.js"></script>
     </body>
 </html>

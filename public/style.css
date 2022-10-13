@@ -81,11 +81,7 @@ Image */
     max-height: 300px;
     overflow: hidden;
 }
-@media (min-width: 1024px) {
-    .card__thumb {
-        max-height: 300px;
-    }
-}
+
 .card__thumb::after {
     position: absolute;
     top: 0;
@@ -100,11 +96,7 @@ Image */
     );
     transition: 0.3s;
 }
-@media (min-width: 1024px) {
-    .card__thumb::after {
-        top: calc(100% - 140px);
-    }
-}
+
 .card__image {
     transition: 0.5s ease-in-out;
 }
@@ -118,12 +110,7 @@ Image */
     text-align: center;
     transition: 0.3s;
 }
-@media (min-width: 1024px) {
-    .card__caption {
-        top: calc(100% - 110px);
-        transform: unset;
-    }
-}
+
 .card__title {
     display: -webkit-box;
     max-height: 85px;
@@ -149,11 +136,7 @@ Image */
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
 }
-@media (min-width: 1024px) {
-    .card__snippet {
-        margin: 60px 0;
-    }
-}
+
 .card__button {
     display: inline-block;
     padding: 10px 20px;
@@ -168,4 +151,80 @@ Image */
 .card__button:hover {
     color: black;
     background-color: white;
+    
+}
+
+/* -------------------------------
+Infinite Scroll */
+
+#loader {
+    display: flex;
+}
+
+.skeleton-card {
+    height: 55vh;
+    width: calc((100% / 3) - 16px);
+    margin: 8px;
+    border-radius: 3px;
+    transition: all 200ms ease-in-out;
+    position: relative;
+    background-color: #eaeaea;
+}
+
+.skeleton-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0,
+        rgba(255, 255, 255, 0.2) 20%,
+        rgba(255, 255, 255, 0.5) 60%,
+        rgba(255, 255, 255, 0)
+    );
+    animation: load 1s infinite;
+}
+
+/* -------------------------------
+@media */
+
+@media (min-width: 1024px) {
+    .card__thumb {
+        max-height: 300px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .card__thumb::after {
+        top: calc(100% - 140px);
+    }
+}
+
+@media (min-width: 1024px) {
+    .card__caption {
+        top: calc(100% - 110px);
+        transform: unset;
+    }
+}
+
+@media (min-width: 1024px) {
+    .card__snippet {
+        margin: 100px 0;
+    }
+}
+
+@keyframes load {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+    .skeleton-card::after {
+        animation: none;
+    }
 }
