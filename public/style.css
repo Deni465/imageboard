@@ -99,6 +99,7 @@ Image */
 
 .card__image {
     transition: 0.5s ease-in-out;
+    object-fit: cover;
 }
 .card__caption {
     position: absolute;
@@ -151,7 +152,6 @@ Image */
 .card__button:hover {
     color: black;
     background-color: white;
-    
 }
 
 /* -------------------------------

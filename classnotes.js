@@ -1,4 +1,5 @@
-// server.js;
+//PART1&2 
+//server.js;
 // // get * manages everything
 // // put post route above get *
 // // express static prefix "/uploads" and in the (path.join(__dirname, "uploads"))
@@ -104,5 +105,53 @@
 
 // app.mount("main");
 
+//PART3
+Server.js
+query to get one image due to the id (DB)
+get https req
+    app.get db.getImage(ID)
+    /image/:id
+    - GET ID FROM THE REQ
 
 
+app.js
+div>figure>image+figcaption
+import component from './component.js'
+components: {
+    'component'(htmlName): component(importName)
+}
+data(){
+    animal [
+        {id: 1,
+        title:animal
+    },
+    show
+    ]
+}
+
+
+in public 
+component.js
+const something = {
+    data(){
+       return title: `something`
+    },
+    mounted(){
+
+    },
+    methdos: {
+
+    },
+    template: `
+    <div className="component">
+    <h3>{{title}}</h3>
+    </div>`
+}
+
+export default component;
+
+html
+<component></component>
+
+css
+bg-color: any color;

@@ -7,9 +7,14 @@ Vue.createApp({
             headline: "Image Board",
             cards: [],
             headlineCssClass: "headline",
+            newImage: {
+                title: "",
+                description: "",
+                username: "",
+                file: undefined,
+            },
         };
     },
-
     methods: {
         upload(e) {
             const form = e.currentTarget;
@@ -28,13 +33,13 @@ Vue.createApp({
 
             const myFormData = new FormData(form);
 
-            myFormData.append("title", this.title);
-            myFormData.append("description", this.description);
-            myFormData.append("username", this.username);
-            myFormData.append("file", this.file);
+            myFormData.append("title", this.newImage.title);
+            myFormData.append("description", this.newImage.description);
+            myFormData.append("username", this.newImage.username);
+            myFormData.append("file", this.newImage.file);
 
             fetch(form.action, {
-                method: "post", 
+                method: "post",
                 body: myFormData,
             })
                 .then((res) => res.json())
@@ -42,10 +47,13 @@ Vue.createApp({
                     if (data.message) {
                         this.message = data.message;
                     }
-                    if (data.path) {
-                        this.cards.unshift({ url: data.path });
+                    if (data) {
+                        this.cards.unshift(data);
                     }
                 });
+        },
+        setFile(e) {
+            console.log("were here");
         },
     },
 

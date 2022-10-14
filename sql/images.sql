@@ -10,22 +10,21 @@ CREATE TABLE images(
 );
 
 INSERT INTO images (url, username, title, description) VALUES (
-    'https://s3.amazonaws.com/imageboard/jAVZmnxnZ-U95ap2-PLliFFF7TO0KqZm.jpg',
+    'https://source.unsplash.com/75S9fpDJVdo/300x510',
     'funkychicken',
-    'Welcome to Spiced and the Future!',
-    'This photo brings back so many great memories.'
+    'NASA Has Found Hundreds Of Potential New Planets',
+    'NASA released a list of 219 new “planet candidates discovered by the Kepler space telescope, 10 of which are similar to Earths size and may be habitable by other life forms.'
 );
-
 INSERT INTO images (url, username, title, description) VALUES (
-    'https://s3.amazonaws.com/imageboard/wg8d94G_HrWdq7bU_2wT6Y6F3zrX-kej.jpg',
-    'discoduck',
-    'Elvis',
-    'We can''t go on together with suspicious minds.'
+    'https://source.unsplash.com/71u2fOofI-U/300x510',
+    'sourchicken',
+    'This Is Your Body And Brain On Coffee',
+    'Drinking more caffeine during the coronavirus lockdown? Here iss how it can affect you over time and advice on making it better for you.'
 );
-
 INSERT INTO images (url, username, title, description) VALUES (
-    'https://s3.amazonaws.com/imageboard/XCv4AwJdm6QuzjenFPKJocpipRNNMwze.jpg',
-    'discoduck',
-    'To be or not to be',
-    'That is the question.'
+    'https://source.unsplash.com/qXMpNtNp1uE/300x510',
+    'sweetchicken',
+    'Why You Should Bring Your Dog To Work',
+    'On Friday, offices around the country celebrated the 15th annual Take Your Dog to Work Day. Though the events primary goal is to raise awareness for pet adoption, the unanticipated impact may be a slightly more relaxing work environment for any office choosing to participate.'
 );
+ 

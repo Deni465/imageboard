@@ -6,24 +6,7 @@ const { PORT = 8080 } = process.env;
 const { uploader } = require("./middleware.js");
 const aws = require("aws-sdk");
 const fs = require("fs");
-
-const cards = [
-    {
-        url: "https://source.unsplash.com/75S9fpDJVdo/300x510",
-        title: "NASA Has Found Hundreds Of Potential New Planets",
-        text: "NASA released a list of 219 new “planet candidates discovered by the Kepler space telescope, 10 of which are similar to Earth’s size and may be habitable by other life forms.",
-    },
-    {
-        url: "https://source.unsplash.com/71u2fOofI-U/300x510",
-        title: "This Is Your Body And Brain On Coffee",
-        text: " Drinking more caffeine during the coronavirus lockdown? Here's how it can affect you over time and advice on making it better for you.",
-    },
-    {
-        url: "https://source.unsplash.com/qXMpNtNp1uE/300x510",
-        title: "Why You Should Bring Your Dog To Work",
-        text: "On Friday, offices around the country celebrated the 15th annual Take Your Dog to Work Day. Though the event's primary goal is to raise awareness for pet adoption, the unanticipated impact may be a slightly more relaxing work environment for any office choosing to participate.",
-    },
-];
+const db = require("./db");
 
 let secrets;
 if (process.env.NODE_ENV == "production") {
@@ -42,10 +25,19 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(express.json());
 
 app.get("/cards", (req, res) => {
-    res.json(cards);
+    db.getAllImages().then((cards) => {
+        res.json(cards);
+    });
+
+    // db.getAllImages
 });
 
 app.post("/cards", uploader.single("file"), (req, res) => {
+    console.log("title:", req.body.title);
+    console.log("description:", req.body.description);
+    console.log("username:", req.body.username);
+    // console.log("url:", req.body.file);
+
     if (req.file) {
         const { filename, mimetype, size, path } = req.file;
         const promise = s3
@@ -59,19 +51,44 @@ app.post("/cards", uploader.single("file"), (req, res) => {
             })
             .promise();
 
+        let url = `https://s3.amazonaws.com/spicedling/${filename}`;
         promise
             .then(() => {
                 console.log("success");
+                // console.log("req.file", req.file);
+                return db.insertImage(
+                    url,
+                    req.body.username,
+                    req.body.title,
+                    req.body.description
+                );
+            })
+            .then((data) => {
+                console.log("we send to the client data", data);
+                // PUT IMG DATA IN DATABASE
+                //db.insertImage/createImage into images
+                // path
+                // username
+                // title
+                // description
+
                 // it worked!!!
                 res.json({
                     success: true,
                     message: "Thank you!",
-                    path: `https://s3.amazonaws.com/spicedling/${filename}`,
+                    id: data[0].id,
+                    created_at: data[0].created_at,
+                    url,
+                    title: req.body.title,
+                    description: req.body.description,
+                    username: req.body.username,
                 });
+                // console.log("url", url);
+                fs.unlinkSync(path, () => {});
             })
             .catch((err) => {
                 // uh oh
-                console.log(err); 
+                console.log(err);
             });
     } else {
         res.json({
