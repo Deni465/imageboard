@@ -107,10 +107,11 @@ app.get("/cards/:id", (req, res) => {
     db.getImage(id)
         .then((data) => {
             console.log("data", data);
-            res.json(data[0]);
+            res.json(data);
         })
         .catch((err) => {
             console.log("err", err);
+            res.status(400);
         });
 });
 

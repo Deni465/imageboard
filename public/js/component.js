@@ -2,8 +2,8 @@ const selectCard = {
     data() {
         return {
             card: {
-                id: "card.id",
-                url: "card.url",
+                id: "id",
+                url: "url",
                 username: "username",
                 title: "title",
                 description: "description",
@@ -11,7 +11,7 @@ const selectCard = {
             },
         };
     },
-    props: ["card"],
+    props: ["id"],
     template: `
         <div id="overlay">
             <div class="card">
@@ -26,9 +26,9 @@ const selectCard = {
     mounted() {
         console.log("mounted");
 
-        let id = this.card;
+        let id = this.id;
 
-        let fetchPath = `/card/${id}`;
+        let fetchPath = `/cards/${id}`;
 
         fetch(fetchPath)
             .then((res) => {
@@ -36,7 +36,7 @@ const selectCard = {
             })
             .then((data) => {
                 console.log("FETCH data :", data);
-                this.card = data;
+                this.card = data[0];
             });
     },
     methods: {

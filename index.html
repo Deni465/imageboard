@@ -6,21 +6,13 @@
         <link rel="stylesheet" href="style.css" />
         <title>Image Board</title>
     </head>
-    <body>
+    <body class="modal-open">
         <div id="main">
             <h1 :class.camel="headlineCssClass">{{ headline }}</h1>
             <p class="status">{{message}}</p>
             <p>{{newImage.title}}</p>
             <p>{{newImage.description}}</p>
             <p>{{newImage.username}}</p>
-
-            <select-card
-                v-if="selectedCard"
-                v-bind:card="selectedCard"
-                @close="deselectCard"
-                v-bind:card="selectedCard"
-            >
-            </select-card>
 
             <form
                 action="/cards"
@@ -67,6 +59,13 @@
                     </figure>
                 </div>
             </div>
+            <select-card
+                v-if="selectedCard"
+                v-bind:card="selectedCard"
+                @close="deselectCard"
+                v-bind:id="selectedCard"
+            >
+            </select-card>
         </div>
 
         <script

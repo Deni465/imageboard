@@ -64,10 +64,11 @@ Vue.createApp({
         selectCard(id) {
             console.log("id :", id);
             this.selectedCard = id;
-            res.redirect("/")
+            document.body.classList.add("modal-open");
         },
         deselectCard() {
             this.selectedCard = null;
+            document.body.classList.remove("modal-open");
         },
     },
 

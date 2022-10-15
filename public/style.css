@@ -13,8 +13,26 @@ body {
     background-color: #e6e6e6;
 }
 
+body.modal-open {
+    overflow: hidden;
+}
+
+/* ------------------------------------
+Modal */
+
 h4 {
     cursor: pointer;
+}
+
+#overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* ---------------------------------
