@@ -65,14 +65,7 @@ app.post("/cards", uploader.single("file"), (req, res) => {
             })
             .then((data) => {
                 console.log("we send to the client data", data);
-                // PUT IMG DATA IN DATABASE
-                //db.insertImage/createImage into images
-                // path
-                // username
-                // title
-                // description
 
-                // it worked!!!
                 res.json({
                     success: true,
                     message: "Thank you!",
@@ -87,7 +80,6 @@ app.post("/cards", uploader.single("file"), (req, res) => {
                 fs.unlinkSync(path, () => {});
             })
             .catch((err) => {
-                // uh oh
                 console.log(err);
             });
     } else {
@@ -99,11 +91,9 @@ app.post("/cards", uploader.single("file"), (req, res) => {
 });
 
 app.get("/cards/:id", (req, res) => {
-    console.log("/cards/:id");
-    // Get id from the request
     const id = req.params.id;
-    console.log("req.params.id", req.params.id);
-    // Use id to get image data from the database
+    // console.log("req.params.id", req.params.id);
+
     db.getImage(id)
         .then((data) => {
             console.log("data", data);

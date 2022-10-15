@@ -14,12 +14,12 @@ const selectCard = {
     props: ["id"],
     template: `
         <div id="overlay">
-            <div class="card">
+            <div class="overlay-card">
                 <h4 @click="closeCard">X</h4>
                 <img v-bind:src="card.url" v-bind:alt="card.description"/>
-                <h4>{{ card.title }}</h4>
-                <p>{{ card.description }}</p>
-                <p>{{ card.username }}</p>
+                <h3>{{ card.title }}</h3>
+                <p class="oc-description">{{ card.description }}</p>
+                <p class="oc-userstamp">Uploaded by {{ card.username }} on {{ card.created_at }}</p>
             </div>
         </div>
     `,
