@@ -14,6 +14,14 @@
             <p>{{newImage.description}}</p>
             <p>{{newImage.username}}</p>
 
+            <select-card
+                v-if="selectedCard"
+                v-bind:card="selectedCard"
+                @close="deselectCard"
+                v-bind:card="selectedCard"
+            >
+            </select-card>
+
             <form
                 action="/cards"
                 method="post"
@@ -38,7 +46,11 @@
             </form>
 
             <div v-if="cards" class="container">
-                <div v-for="card in cards" class="card">
+                <div
+                    v-for="card in cards"
+                    class="card"
+                    @click="selectCard(card.id)"
+                >
                     <figure class="card__thumb">
                         <div>
                             <img
@@ -57,11 +69,6 @@
             </div>
         </div>
 
-        <!-- <div id="loader">
-            <div class="skeleton-card"></div>
-            <div class="skeleton-card"></div>
-            <div class="skeleton-card"></div>
-        </div> -->
         <script
             src="/js/app.js"
             type="module"

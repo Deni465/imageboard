@@ -98,6 +98,22 @@ app.post("/cards", uploader.single("file"), (req, res) => {
     }
 });
 
+app.get("/cards/:id", (req, res) => {
+    console.log("/cards/:id");
+    // Get id from the request
+    const id = req.params.id;
+    console.log("req.params.id", req.params.id);
+    // Use id to get image data from the database
+    db.getImage(id)
+        .then((data) => {
+            console.log("data", data);
+            res.json(data[0]);
+        })
+        .catch((err) => {
+            console.log("err", err);
+        });
+});
+
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
 });

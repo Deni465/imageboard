@@ -1,4 +1,5 @@
 import * as Vue from "./vue.js";
+import selectCard from "./component.js";
 
 Vue.createApp({
     data() {
@@ -13,7 +14,11 @@ Vue.createApp({
                 username: "",
                 file: undefined,
             },
+            selectedCard: null,
         };
+    },
+    components: {
+        "select-card": selectCard,
     },
     methods: {
         upload(e) {
@@ -54,6 +59,15 @@ Vue.createApp({
         },
         setFile(e) {
             console.log("were here");
+            this.newImage.file = e.target.files[0];
+        },
+        selectCard(id) {
+            console.log("id :", id);
+            this.selectedCard = id;
+            res.redirect("/")
+        },
+        deselectCard() {
+            this.selectedCard = null;
         },
     },
 

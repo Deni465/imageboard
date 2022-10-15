@@ -22,3 +22,11 @@ module.exports.getAllImages = function () {
         .then((result) => result.rows)
         .catch((error) => console.log("error in getting images", error));
 };
+
+module.exports.getImage = function (id) {
+    const sql = `SELECT * FROM images WHERE id = $1;`;
+    return db
+        .query(sql, [id])
+        .then((result) => result.rows)
+        .catch((error) => console.log("error in getting image by id", error));
+};
