@@ -15,6 +15,7 @@ Vue.createApp({
                 file: undefined,
             },
             selectedCard: null,
+            loadMore: true,
         };
     },
     components: {
@@ -56,6 +57,7 @@ Vue.createApp({
                         this.cards.unshift(data);
                     }
                 });
+            form.reset();
         },
         setFile(e) {
             console.log("were here");
@@ -69,6 +71,27 @@ Vue.createApp({
         deselectCard() {
             this.selectedCard = null;
             document.body.classList.remove("modal-open");
+        },
+        getMoreImages() {
+            const lowestId = this.cards[this.cards.length - 1].id;
+            console.log("lowestId", lowestId);
+            fetch(`/more-cards/${lowestId}`)
+                .then((res) => {
+                    return res.json();
+                })
+                .then((cards) => {
+                    for (let card of cards) {
+                        this.cards.push(card);
+                        if (card.lowestId == card.id) {
+                            this.loadMore = false;
+                        }
+                    }
+                });
+            // get lowestId
+            // from the cards array
+            // fetch from specific route
+            // needs lowestId as param
+            // push each new card to the data
         },
     },
 

@@ -7,6 +7,7 @@ const { uploader } = require("./middleware.js");
 const aws = require("aws-sdk");
 const fs = require("fs");
 const db = require("./db");
+const { log } = require("console");
 
 let secrets;
 if (process.env.NODE_ENV == "production") {
@@ -28,8 +29,15 @@ app.get("/cards", (req, res) => {
     db.getAllImages().then((cards) => {
         res.json(cards);
     });
+});
 
-    // db.getAllImages
+app.get("/more-cards/:lowestId", (req, res) => {
+    const { lowestId } = req.params;
+    console.log("req.params.lowestId", lowestId);
+    db.getMoreImages(lowestId).then((cards) => {
+        console.log(cards);
+        res.json(cards);
+    });
 });
 
 app.post("/cards", uploader.single("file"), (req, res) => {
@@ -94,7 +102,7 @@ app.get("/cards/:id", (req, res) => {
     const id = req.params.id;
     // console.log("req.params.id", req.params.id);
 
-    db.getImage(id)
+    db.getImageById(id)
         .then((data) => {
             console.log("data", data);
             res.json(data);
@@ -104,6 +112,10 @@ app.get("/cards/:id", (req, res) => {
             res.status(400);
         });
 });
+
+// app.get("/load-cards/:id", (req, res) => {
+
+// });
 
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));

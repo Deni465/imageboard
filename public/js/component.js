@@ -3,8 +3,8 @@ const selectCard = {
         return {
             card: {
                 id: "id",
-                url: "url",
-                username: "username",
+                url: null,
+                username: null,
                 title: "title",
                 description: "description",
                 created_at: "created_at",
@@ -19,7 +19,7 @@ const selectCard = {
                 <img v-bind:src="card.url" v-bind:alt="card.description"/>
                 <h3>{{ card.title }}</h3>
                 <p class="oc-description">{{ card.description }}</p>
-                <p class="oc-userstamp">Uploaded by {{ card.username }} on {{ card.created_at }}</p>
+                <p class="oc-userstamp">Uploaded by <strong>{{ card.username }}</strong> on {{ card.created_at }}</p>
             </div>
         </div>
     `,
