@@ -9,33 +9,36 @@
     <body>
         <div id="main">
             <h1 :class.camel="headlineCssClass">{{ headline }}</h1>
-            <p class="status">{{message}}</p>
-            <!-- <p>{{newImage.title}}</p>
-            <p>{{newImage.description}}</p>
-            <p>{{newImage.username}}</p> -->
+            <div>
+                <p class="status">{{message}}</p>
+                <!-- <p>{{newImage.title}}</p>
+                <p>{{newImage.description}}</p>
+                <p>{{newImage.username}}</p> -->
 
-            <form
-                action="/cards"
-                method="post"
-                enctype="multipart/form-data"
-                @submit.prevent="upload"
-            >
-                <input
-                    @change="setFile"
-                    type="file"
-                    name="file"
-                    id="file"
-                    required
-                    accept="image/*"
-                />
-                <label for="username">Username</label>
-                <input v-model="newImage.username" type="text" />
-                <label for="title">Title</label>
-                <input v-model="newImage.title" type="text" />
-                <label for="description">Description</label>
-                <input v-model="newImage.description" type="text" />
-                <input type="submit" value="Upload" class="btn-submit" />
-            </form>
+                <form
+                    action="/cards"
+                    method="post"
+                    enctype="multipart/form-data"
+                    @submit.prevent="upload"
+                >
+                    <input
+                        @change="setFile"
+                        w
+                        type="file"
+                        name="file"
+                        id="file"
+                        required
+                        accept="image/*"
+                    />
+                    <label for="username">Username</label>
+                    <input v-model="newImage.username" type="text" />
+                    <label for="title">Title</label>
+                    <input v-model="newImage.title" type="text" />
+                    <label for="description">Description</label>
+                    <input v-model="newImage.description" type="text" />
+                    <input type="submit" value="Upload" class="btn-submit" />
+                </form>
+            </div>
 
             <div v-if="cards" class="container">
                 <div v-for="card in cards" class="card">
@@ -60,9 +63,38 @@
                     </figure>
                 </div>
             </div>
-            <button v-if = "loadMore" @click="getMoreImages" id="loadMore">
+
+            <div class="container">
+                <div class="center">
+                    <button
+                        class="btn"
+                        v-if="loadMore"
+                        @click="getMoreImages"
+                        id="loadMore"
+                    >
+                        <svg
+                            width="180px"
+                            height="60px"
+                            viewBox="0 0 180 60"
+                            class="border"
+                        >
+                            <polyline
+                                points="179,1 179,59 1,59 1,1 179,1"
+                                class="bg-line"
+                            />
+                            <polyline
+                                points="179,1 179,59 1,59 1,1 179,1"
+                                class="hl-line"
+                            />
+                        </svg>
+                        <span>LOAD MORE</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- <button v-if="loadMore" @click="getMoreImages" id="loadMore">
                 Load More Images
-            </button>
+            </button> -->
             <select-card
                 v-if="selectedCard"
                 v-bind:id="selectedCard"

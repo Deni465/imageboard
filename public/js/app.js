@@ -1,5 +1,5 @@
 import * as Vue from "./vue.js";
-import selectCard from "./component.js";
+import selectCard from "./modal-component.js";
 
 Vue.createApp({
     data() {
@@ -24,7 +24,7 @@ Vue.createApp({
     methods: {
         upload(e) {
             const form = e.currentTarget;
-            console.log(form);
+            // console.log("form", form);
 
             // get the file input
             // check its files.
@@ -102,7 +102,10 @@ Vue.createApp({
             .then((res) => res.json())
             .then((cards) => {
                 this.cards = cards;
-                console.log(cards);
+                console.log("cards: ", cards);
+                // if (cards.lowestId == cards.id) {
+                //     this.loadMore = false;
+                // }
             });
     },
 }).mount("#main");

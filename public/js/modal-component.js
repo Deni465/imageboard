@@ -3,8 +3,8 @@ const selectCard = {
         return {
             card: {
                 id: "id",
-                url: null,
-                username: null,
+                url: "url",
+                username: "username",
                 title: "title",
                 description: "description",
                 created_at: "created_at",
@@ -24,8 +24,6 @@ const selectCard = {
         </div>
     `,
     mounted() {
-        console.log("mounted");
-
         let id = this.id;
 
         let fetchPath = `/cards/${id}`;
@@ -35,7 +33,6 @@ const selectCard = {
                 return res.json();
             })
             .then((data) => {
-                console.log("FETCH data :", data);
                 this.card = data[0];
             });
     },

@@ -13,12 +13,70 @@ body {
     background-color: #e6e6e6;
 }
 
-body.modal-open {
-    overflow: hidden;
+/* ---------------------------------
+Load Button */
+
+.center {
+    width: 180px;
+    height: 60px;
+    position: absolute;
+}
+
+.btn {
+    width: 180px;
+    height: 60px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid #e8ebee;
+    outline: none;
+    transition: 1s ease-in-out;
+}
+
+svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    fill: none;
+    stroke: black;
+    stroke-dasharray: 150 480;
+    stroke-dashoffset: 150;
+    transition: 1.5s ease-in-out;
+}
+
+.btn:hover {
+    transition: 1s ease-in-out;
+    background: white;
+}
+
+.btn:hover svg {
+    stroke-dashoffset: -480;
+}
+
+.btn span {
+    color: black;
+    font-size: 16px;
+    font-weight: 100;
+}
+
+/* ------------------------------------
+Form */
+
+.status {
+    display: flex;
+    justify-content: center;
+}
+
+div form {
+    display: flex;
+    justify-content: center;
 }
 
 /* ------------------------------------
 Modal */
+
+body.modal-open {
+    overflow: hidden;
+}
 
 h4 {
     cursor: pointer;
@@ -69,6 +127,17 @@ h3 {
     font-size: 12px;
     font-style: italic;
 }
+
+/* ------------------------------------
+Comments */
+
+/* overlay-comment {
+    width: 360px;
+    margin: 10px;
+    background-color: white;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+    display: flex;
+} */
 
 /* ---------------------------------
 Headline */
@@ -152,6 +221,8 @@ Image */
 }
 .card__caption {
     position: absolute;
+    width: 100%;
+    text-align: center;
     top: 50%;
     z-index: 1;
     padding: 0 20px;
@@ -162,7 +233,8 @@ Image */
 }
 
 .card__title {
-    display: -webkit-box;
+    /* display: -webkit-box; */
+    width: 100%;
     max-height: 85px;
     overflow: hidden;
     font-family: "Playfair Display", serif;
@@ -174,7 +246,8 @@ Image */
     -webkit-box-orient: vertical;
 }
 .card__snippet {
-    display: -webkit-box;
+    /* display: -webkit-box; */
+    width: 100%;
     max-height: 150px;
     margin: 20px 0;
     overflow: hidden;
@@ -201,41 +274,6 @@ Image */
 .card__button:hover {
     color: black;
     background-color: white;
-}
-
-/* -------------------------------
-Infinite Scroll */
-
-#loader {
-    display: flex;
-}
-
-.skeleton-card {
-    height: 55vh;
-    width: calc((100% / 3) - 16px);
-    margin: 8px;
-    border-radius: 3px;
-    transition: all 200ms ease-in-out;
-    position: relative;
-    background-color: #eaeaea;
-}
-
-.skeleton-card::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    transform: translateX(-100%);
-    background-image: linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0) 0,
-        rgba(255, 255, 255, 0.2) 20%,
-        rgba(255, 255, 255, 0.5) 60%,
-        rgba(255, 255, 255, 0)
-    );
-    animation: load 1s infinite;
 }
 
 /* -------------------------------

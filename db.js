@@ -49,7 +49,7 @@ module.exports.insertComment = function (comment, username, image_id) {
     return db
         .query(sql, [comment, username, image_id])
         .then((result) => result.rows)
-        .catch((error) => console.log("error in loading more images: ", error));
+        .catch((error) => console.log("error in inserting comment: ", error));
 };
 
 module.exports.getMoreImages = function (id) {
