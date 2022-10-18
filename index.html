@@ -21,22 +21,33 @@
                     enctype="multipart/form-data"
                     @submit.prevent="upload"
                 >
-                    <input
-                        @change="setFile"
-                        w
-                        type="file"
-                        name="file"
-                        id="file"
-                        required
-                        accept="image/*"
-                    />
-                    <label for="username">Username</label>
-                    <input v-model="newImage.username" type="text" />
-                    <label for="title">Title</label>
-                    <input v-model="newImage.title" type="text" />
-                    <label for="description">Description</label>
-                    <input v-model="newImage.description" type="text" />
-                    <input type="submit" value="Upload" class="btn-submit" />
+                    <div class="uploadForm">
+                        <div>
+                            <input
+                                @change="setFile"
+                                type="file"
+                                name="file"
+                                id="file"
+                                required
+                                accept="image/*"
+                            />
+                        </div>
+                        <div>
+                            <label for="username">Username</label>
+                            <input v-model="newImage.username" type="text" />
+                            <label for="title">Title</label>
+                            <input v-model="newImage.title" type="text" />
+                            <label for="description">Description</label>
+                            <input v-model="newImage.description" type="text" />
+                        </div>
+                        <div>
+                            <input
+                                type="submit"
+                                value="UPLOAD"
+                                class="btn-submit"
+                            />
+                        </div>
+                    </div>
                 </form>
             </div>
 
@@ -46,7 +57,7 @@
                         <div>
                             <img
                                 :src="card.url"
-                                alt="Picture by Kyle Cottrell"
+                                alt="card.title"
                                 class="card__image"
                             />
                         </div>

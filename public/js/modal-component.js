@@ -1,3 +1,6 @@
+import * as Vue from "./vue.js";
+import showComment from "./comment-modal.js";
+
 const selectCard = {
     data() {
         return {
@@ -13,7 +16,8 @@ const selectCard = {
     },
     props: ["id"],
     template: `
-        <div id="overlay">
+    <div id="overlay">
+        <div class="cardAndComment">
             <div class="overlay-card">
                 <h4 @click="closeCard">X</h4>
                 <img v-bind:src="card.url" v-bind:alt="card.description"/>
@@ -21,7 +25,11 @@ const selectCard = {
                 <p class="oc-description">{{ card.description }}</p>
                 <p class="oc-userstamp">Uploaded by <strong>{{ card.username }}</strong> on {{ card.created_at }}</p>
             </div>
+            <div>
+                <show-comment></show-comment>
+            </div>
         </div>
+    </div>
     `,
     mounted() {
         let id = this.id;
@@ -35,6 +43,9 @@ const selectCard = {
             .then((data) => {
                 this.card = data[0];
             });
+    },
+    components: {
+        "show-comment": showComment,
     },
     methods: {
         closeCard() {

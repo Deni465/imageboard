@@ -19,7 +19,7 @@ INSERT INTO images (url, username, title, description) VALUES (
     'https://source.unsplash.com/71u2fOofI-U/300x510',
     'sourchicken',
     'This Is Your Body And Brain On Coffee',
-    'Drinking more caffeine during the coronavirus lockdown? Here iss how it can affect you over time and advice on making it better for you.'
+    'Here iss how it can affect you over time and advice on making it better for you.'
 );
 INSERT INTO images (url, username, title, description) VALUES (
     'https://source.unsplash.com/qXMpNtNp1uE/300x510',

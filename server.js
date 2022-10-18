@@ -40,6 +40,10 @@ app.get("/more-cards/:lowestId", (req, res) => {
     });
 });
 
+app.post("/comment", (req, res) => {});
+
+app.get("/comment/:id", (req, res) => {});
+
 app.post("/cards", uploader.single("file"), (req, res) => {
     console.log("title:", req.body.title);
     console.log("description:", req.body.description);

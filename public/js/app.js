@@ -1,11 +1,12 @@
 import * as Vue from "./vue.js";
 import selectCard from "./modal-component.js";
+import showComment from "./comment-modal.js";
 
 Vue.createApp({
     data() {
         return {
             message: "Please upload a file",
-            headline: "Image Board",
+            headline: "Halloween",
             cards: [],
             headlineCssClass: "headline",
             newImage: {
@@ -20,6 +21,7 @@ Vue.createApp({
     },
     components: {
         "select-card": selectCard,
+        // "show-comment": showComment,
     },
     methods: {
         upload(e) {

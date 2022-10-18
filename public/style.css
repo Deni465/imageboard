@@ -11,6 +11,7 @@ body {
     width: 100vw;
     /* height: 100vh; */
     background-color: #e6e6e6;
+    font-family: sans-serif;
 }
 
 /* ---------------------------------
@@ -40,7 +41,7 @@ svg {
     stroke: black;
     stroke-dasharray: 150 480;
     stroke-dashoffset: 150;
-    transition: 1.5s ease-in-out;
+    transition: 1s ease-in-out;
 }
 
 .btn:hover {
@@ -54,21 +55,46 @@ svg {
 
 .btn span {
     color: black;
-    font-size: 16px;
+    /* font-size: 16px; */
     font-weight: 100;
 }
 
 /* ------------------------------------
-Form */
+Upload Form */
+
+.center {
+    width: 180px;
+    height: 60px;
+    position: absolute;
+}
 
 .status {
     display: flex;
     justify-content: center;
+    margin: 20px;
 }
 
-div form {
+.uploadForm {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+}
+
+.btn-submit {
+    width: 180px;
+    height: 60px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid #e8ebee;
+    outline: none;
+    transition: 1s ease-in-out;
+}
+
+.btn-submit:hover {
+    transition: 1s ease-in-out;
+    background: white;
+    border: 1px solid black;
 }
 
 /* ------------------------------------
@@ -131,20 +157,51 @@ h3 {
 /* ------------------------------------
 Comments */
 
-/* overlay-comment {
+.cardAndComment {
+    display: flex;
+}
+
+.overlay-comment {
     width: 360px;
     margin: 10px;
     background-color: white;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
     display: flex;
-} */
+    flex-direction: column;
+}
+
+h4 {
+    cursor: pointer;
+    text-align: end;
+    margin: inherit;
+}
+
+form {
+    flex-wrap: wrap;
+}
+
+form div label {
+    margin: 10px;
+}
+
+form div {
+    margin: 10px;
+}
+
+.commentButton {
+    width: 50%;
+}
+
+.commentButton input {
+    width: 100%;
+}
 
 /* ---------------------------------
 Headline */
 
 .headline {
     color: transparent;
-    background: black;
+    background: #ed8200;
     display: flex;
     justify-content: center;
     margin: 20px;
@@ -152,7 +209,7 @@ Headline */
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
-    text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
+    text-shadow: -2px 6px 6px rgba(255, 255, 255, 50%);
 }
 
 .headline:before,
