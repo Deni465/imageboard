@@ -25,6 +25,7 @@ const showComment = {
             <div class="commentButton">
                 <input type="submit" value="Comment" class="btn-submit" />
             </div>
+            <p></p>
         </form>
     </div>
     `,

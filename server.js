@@ -40,9 +40,11 @@ app.get("/more-cards/:lowestId", (req, res) => {
     });
 });
 
-app.post("/comment", (req, res) => {});
+app.post("/comment", (req, res) => {
+    db.insertComment();
+});
 
-app.get("/comment/:id", (req, res) => {});
+// app.get("/comment/:id", (req, res) => {});
 
 app.post("/cards", uploader.single("file"), (req, res) => {
     console.log("title:", req.body.title);
