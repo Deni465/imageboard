@@ -40,11 +40,52 @@ app.get("/more-cards/:lowestId", (req, res) => {
     });
 });
 
-app.post("/comment", (req, res) => {
-    db.insertComment();
+// app.post("/comment", (req, res) => {
+//     console.log(req.body.image_id);
+//     const newComment = {
+//         image_id: req.body.image_id,
+//         comment: req.body.comment,
+//         username: req.body.username,
+//     };
+//     db.insertComment(
+//         req.body.image_id,
+//         req.body.username,
+//         req.body.comment
+//     ).then(() => {
+//         res.json({
+//             success: true,
+//             comment_message: "Thanks for your comment!",
+//             newComment,
+//         });
+//     });
+// });
+
+app.get("/comment/:image_id", (req, res) => {
+    console.log("req.params.image_id", req.params.image_id);
+    db.getAllComments(req.params.image_id).then((rows) => {
+        console.log("rows", rows);
+        res.json(rows);
+    });
 });
 
-// app.get("/comment/:id", (req, res) => {});
+app.post("/comment/:image_id", uploader.single("file"), (req, res) => {
+    console.log("req.params.image_id", req.params.image_id);
+    console.log("req.body", req.body);
+
+    db.insertComment(
+        req.body.comment,
+        req.body.username,
+        req.params.image_id
+    ).then((data) => {
+        console.log(data);
+        res.json(data);
+
+        // db.getAllComments(req.params.image_id).then((rows) => {
+        //     console.log("rows", rows);
+        //     res.json(rows);
+        // });
+    });
+});
 
 app.post("/cards", uploader.single("file"), (req, res) => {
     console.log("title:", req.body.title);
@@ -110,7 +151,7 @@ app.get("/cards/:id", (req, res) => {
 
     db.getImageById(id)
         .then((data) => {
-            console.log("data", data);
+            // console.log("data", data);
             res.json(data);
         })
         .catch((err) => {

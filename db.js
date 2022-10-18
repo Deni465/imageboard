@@ -45,7 +45,7 @@ module.exports.getAllComments = function (id) {
 module.exports.insertComment = function (comment, username, image_id) {
     const sql = `INSERT INTO comments (comment, username, image_id) 
     VALUES ($1, $2, $3)
-    RETURNUING comment, username, created_at;`;
+    RETURNING *;`;
     return db
         .query(sql, [comment, username, image_id])
         .then((result) => result.rows)

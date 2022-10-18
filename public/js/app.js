@@ -1,12 +1,12 @@
 import * as Vue from "./vue.js";
 import selectCard from "./modal-component.js";
-import showComment from "./comment-modal.js";
+// import showComment from "./comment-modal.js";
 
 Vue.createApp({
     data() {
         return {
             message: "Please upload a file",
-            headline: "Halloween",
+            headline: "ORANGE SENSATION",
             cards: [],
             headlineCssClass: "headline",
             newImage: {
@@ -69,10 +69,12 @@ Vue.createApp({
             console.log("id :", id);
             this.selectedCard = id;
             document.body.classList.add("modal-open");
+            history.pushState({}, "", `/selectCard/${id}`);
         },
         deselectCard() {
             this.selectedCard = null;
             document.body.classList.remove("modal-open");
+            history.pushState({}, "", `/`);
         },
         getMoreImages() {
             const lowestId = this.cards[this.cards.length - 1].id;

@@ -26,7 +26,7 @@ const selectCard = {
                 <p class="oc-userstamp">Uploaded by <strong>{{ card.username }}</strong> on {{ card.created_at }}</p>
             </div>
             <div>
-                <show-comment></show-comment>
+                <show-comment :image_id="this.id"></show-comment>
             </div>
         </div>
     </div>
