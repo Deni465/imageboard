@@ -11,7 +11,6 @@ const showComment = {
     props: ["image_id"],
     template: `
     <div class="overlay-comment">
-        <h4 @click="closeComments">X</h4>
         <form action="/comment" method="post">
             <div>
                 <label for="username">Your Username</label>
@@ -26,9 +25,9 @@ const showComment = {
             </div>
         </form>
           <div v-for="comment in comments" class="comment">
-                <p>{{ comment.username }}</p>
-                <p>{{ comment.comment }}</p>
-                <p>{{ comment.created_at }}</p>
+                <p class="oc-user">{{ comment.username }}</p>
+                <p class="oc-comment">{{ comment.comment }}</p>
+                <p class="oc-userstamp">{{ comment.created_at }}</p>
             </div>
     </div>
     `,

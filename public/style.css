@@ -196,6 +196,14 @@ form div {
     width: 100%;
 }
 
+.comment {
+    margin: inherit;
+}
+
+.oc-user {
+    font-weight: bold;
+    font-size: 13px;
+}
 /* ---------------------------------
 Headline */
 

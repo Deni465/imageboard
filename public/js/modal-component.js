@@ -44,6 +44,7 @@ const selectCard = {
                 this.card = data[0];
             });
     },
+
     components: {
         "show-comment": showComment,
     },

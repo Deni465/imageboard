@@ -32,7 +32,6 @@ Vue.createApp({
             // check its files.
             // if no files, set error message!
             const fileInput = form.querySelector("input[type=file]");
-            console.log(fileInput);
 
             if (fileInput.files.length < 1) {
                 this.message = "You must first select a file!";
@@ -97,9 +96,18 @@ Vue.createApp({
             // needs lowestId as param
             // push each new card to the data
         },
+        handlePopstate(event) {
+            const pathname = document.location.pathname;
+            if (pathname.includes("selectCard")) {
+                this.selectCard(pathname.replace("/selectCard/", ""));
+            }
+            if (pathname === "/") {
+                this.deselectCard();
+            }
+        },
     },
-
     mounted() {
+        window.addEventListener("popstate", this.handlePopstate);
         this.state = "mounted";
 
         fetch("/cards")
@@ -111,5 +119,8 @@ Vue.createApp({
                 //     this.loadMore = false;
                 // }
             });
+    },
+    unmounted() {
+        window.removeEventListener("popstate", this.handlePopstate);
     },
 }).mount("#main");
