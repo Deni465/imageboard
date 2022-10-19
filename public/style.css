@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Fasthand&family=Satisfy&display=swap");
 * {
     box-sizing: border-box;
     margin: 0;
@@ -38,7 +39,7 @@ svg {
     left: 0;
     top: 0;
     fill: none;
-    stroke: black;
+    stroke: #ed8200;
     stroke-dasharray: 150 480;
     stroke-dashoffset: 150;
     transition: 1s ease-in-out;
@@ -94,7 +95,7 @@ Upload Form */
 .btn-submit:hover {
     transition: 1s ease-in-out;
     background: white;
-    border: 1px solid black;
+    border: 1px solid #ed8200;
 }
 
 /* ------------------------------------
@@ -121,7 +122,7 @@ h4 {
 }
 
 .overlay-card {
-    width: 360px;
+    width: 400px;
     margin: 10px;
     background-color: white;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
@@ -218,6 +219,8 @@ Headline */
     -moz-background-clip: text;
     background-clip: text;
     text-shadow: -2px 6px 6px rgba(255, 255, 255, 50%);
+    font-family: "Fasthand", cursive;
+    font-family: "Satisfy", cursive;
 }
 
 .headline:before,
